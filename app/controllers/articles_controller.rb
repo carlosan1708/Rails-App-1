@@ -7,8 +7,8 @@ class  ArticlesController < ApplicationController
 		@article =Article.new
 	end
 	def create
-		#render plain: params[:article].inspect
-		
+		#render plain: params[:article].inspect	
+		@article = Article.new(article_params)
 		if @article.save
 		flash[:notice] = "Article was successfully created"
 		redirect_to article_path(@article)
@@ -25,7 +25,6 @@ class  ArticlesController < ApplicationController
 	end
 
 	def update
-		
 		if @article.update(article_params) 
 			flash[:notice] = "Article was successfully updated"
 			redirect_to article_path(@article)
